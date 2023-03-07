@@ -1,0 +1,28 @@
+﻿@model List<DemoMVC.Models.InfoModel>
+@{
+}
+
+<h1>User List</h1><br />
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Stored From</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Phone</td>
+                <td>@user.StoredFrom</td>
+            </tr>
+        }
+    </tbody>
+</table>
