@@ -1,20 +1,17 @@
 ﻿@model List<DemoMVC.Models.InfoModel>
-
 @{
 }
 
-<h1>User List</h1>
+<h1>User List With API</h1>
 <br />
 <table class="table">
     <thead>
         <tr>
-            <td>User Id</td>
+            <td>Id</td>
             <td>Name</td>
             <td>Email</td>
             <td>Phone</td>
             <td>Stored From</td>
-            <td>Edit User</td>
-
         </tr>
     </thead>
     <tbody>
@@ -26,17 +23,7 @@
                 <td>@user.Email</td>
                 <td>@user.Phone</td>
                 <td>@user.StoredFrom</td>
-                <td><a href="Edit/@user.Id">Edit</a></td>
             </tr>
         }
     </tbody>
 </table>
-@if (TempData["SuccessMsg"] != null)
-{
-    <script>alert('@TempData["SuccessMsg"]');</script>
-}
-
-@if (TempData["DeleteMsg"] != null)
-{
-    <script>alert('@TempData["DeleteMsg"]');</script>
-}

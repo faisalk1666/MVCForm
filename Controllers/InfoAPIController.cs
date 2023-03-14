@@ -1,6 +1,5 @@
 ﻿using DemoMVC.Data;
 using DemoMVC.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

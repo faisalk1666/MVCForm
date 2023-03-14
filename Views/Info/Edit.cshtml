@@ -1,16 +1,21 @@
-﻿@model DemoMVC.Models.AddInfoViewModel
+﻿@model DemoMVC.Models.UpdateModel
 
 @{
 }
 
-<h1>Add User</h1>
-<form method="post" action="Add" class="mt-5">
+<h1>Edit User</h1>
+<form method="post" action="Edit" class="mt-5">
+    <div class="form-group">
+        <label for="Id">Id:</label>
+        <input type="text" class="form-control" asp-for="Id" readonly>
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
     <div class="form-group">
         <label for="Name">Name:</label>
         <input type="text" class="form-control" asp-for="Name">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
-    
+
     <div class="form-group">
         <label for="email">Email address:</label>
         <input type="email" class="form-control" asp-for="Email">
@@ -29,7 +34,8 @@
         <input type="text" class="form-control" asp-for="StoredFrom">
         <span asp-validation-for="StoredFrom" class="text-danger"></span>
     </div>
-    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+    <button type="submit" class="btn btn-primary mt-2">Save</button>
+    <button type="submit" class="btn btn-danger mt-2" asp-action="Delete" asp-controller="Info">Delete</button>
 </form>
 
 @section Scripts {
@@ -37,3 +43,5 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+@**@

@@ -24,13 +24,41 @@ namespace DemoMVC.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("AddAPI");
+                    return RedirectToAction("GetUser");
                 }
 
                 ModelState.AddModelError(string.Empty, "Server Error. Please contact administrator.");
 
                 return View(request);
             }
+        }
+
+        [HttpGet]
+        public IActionResult GetUser()
+        {
+            IEnumerable<InfoModel> user = null;
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7007/api/InfoAPI");
+                var response = client.GetAsync("InfoAPI");
+                response.Wait();
+
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<IList<InfoModel>>();
+                    readTask.Wait();
+
+                    user = readTask.Result;
+                }
+                else
+                {
+                    user = Enumerable.Empty<InfoModel>();
+                    ModelState.AddModelError(string.Empty, "Server Error !");
+                }
+                
+            }
+            return View(user);
         }
     }
 }
